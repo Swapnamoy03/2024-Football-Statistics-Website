@@ -1,0 +1,75 @@
+<div class="col-lg-4 col-sm-12 col-md-11 pt-3" >
+    <!--card-->
+    <div class="card card-details rounded-5 border-0 scale-75 transition ease-in-out delay-200 -translate-y-px-hover duration-700 scale-100-hover" style="background: {{top_player.club.primary_color}}" >
+        <div class="card-body">
+            <!--club logo and player name-->
+            <div class="row pb-3">
+                <!--club logo-->
+                <div class="col-3">
+                    <img class="img-fluid opacity-75 mx-auto d-block py-3" src="{{top_player.club.club_logo.url}}" alt="{{top_player.club_id.club_name}}">
+                </div>
+                <!--player name-->
+                <div class="col-9">
+                        <h1 class="card-title text-capitalize fs-4 pt-3" style="background: linear-gradient(90deg, {{top_player.club.text_color}} 20%, {{top_player.club.text_color}} 50%); 
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                        opacity: 0.8;
+                        font-weight: 400">{{ top_player.player_first_name }}</h1>                        
+                        <h4 class="card-subtitle text-capitalize player-last-name pb-3" style="background: linear-gradient(90deg, {{top_player.club.text_color}} 50%, {{top_player.club.text_color}} 50%); 
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                        opacity: 0.9;
+                        font-weight: 700" >{{ top_player.player_last_name }}</h4>                           
+                </div>
+            </div>
+            <!--statistics-->
+            <div class="row">
+                {% if top_player.position == 'Attacker' or top_player.position == 'Midfielder' %}
+                  <!--goals-->
+                  <div class="col-4 mt-4">
+                    <h3 class="card-title text-opacity-75 stat-heading" style="color: {{top_player.club.secondary_color}};">Goals</h3>
+                    <h2 class="card-subtitle stat-data pt-4" style="color:{{top_player.club.text_color}}" >{{ top_player.stat.goals }}</h2>
+                  </div>
+                  <!--assists-->
+                  <div class="col-4 mt-4">
+                    <h3 class="card-title text-opacity-75 stat-heading" style="color: {{top_player.club.secondary_color}};">Assists</h3>
+                    <h2 class="card-subtitle text-opacity-50 stat-data pt-4" style="color: {{top_player.club.text_color}};">{{top_player.stat.assists}}</h2>
+                  </div>
+                {% endif %}
+
+                {% if top_player.position == 'Defender' %}
+                  <div class="col-4 mt-4">
+                    <h3 class="card-title text-opacity-75 stat-heading" style="color: {{top_player.club.secondary_color}};">Tackles</h3>
+                    <h2 class="card-subtitle stat-data pt-4" style="color:{{top_player.club.text_color}}" >{{ top_player.stat.saves }}</h2>
+                  </div>
+                  <div class="col-4 mt-4">
+                    <h3 class="card-title text-opacity-75 stat-heading" style="color: {{top_player.club.secondary_color}};">Clearances</h3>
+                    <h2 class="card-subtitle stat-data pt-4" style="color:{{top_player.club.text_color}}" >{{ top_player.stat.saves }}</h2>
+                  </div>
+                {% endif %}
+
+                {% if top_player.position == 'Goalkeeper' %}
+                  <!--saves-->
+                  <div class="col-3 mt-4">
+                    <h3 class="card-title text-opacity-75 stat-heading" style="color: {{top_player.club.secondary_color}};">Saves</h3>
+                    <h2 class="card-subtitle stat-data pt-4" style="color:{{top_player.club.text_color}}" >{{ top_player.stat.saves }}</h2>
+                  </div>
+                  <!--clean sheets-->
+                  <div class="col-5 mt-4">
+                    <h3 class="card-title text-opacity-75 stat-heading" style="color: {{top_player.club.secondary_color}};">Clean Sheets</h3>
+                    <h2 class="card-subtitle stat-data pt-4" style="color:{{top_player.club.text_color}}" >{{ top_player.stat.clean_sheets }}</h2>
+                  </div>
+                {% endif %}
+                <!--performance-->
+                <div class="col-4 mt-4">
+                    <h3 class="card-title text-opacity-75 stat-heading" style="color: {{top_player.club.secondary_color}};">Rating</h3>
+                    <h2 class="card-subtitle text-opacity-50 stat-data pt-4" style="color: {{top_player.club.text_color}};">{{top_player.stat.performance}}</h2>
+                  </div>
+                
+            </div>
+        </div>
+
+        <!--player image-->
+        <img class="img-fluid" src="{{top_player.profile_image.url}}" alt="{{top_player}}">
+    </div>
+</div>

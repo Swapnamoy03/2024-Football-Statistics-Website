@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% load static  %}
+
+{% block content %}
+   
+<article class="intro" id="search-bar">
+  <form action="POST">
+    <div class="text-center">
+        <div class="min-vh-100 d-flex justify-content-center align-items-center">
+            <input type="search" class="border-primary form-control w-50 form-control-lg rounded-5 m-4 shadow-3" placeholder="Search for a club..." aria-label="Search" aria-describedby="search-button">
+            <div class="input-group-append">
+              <button class="btn btn-light rounded-5 scale-110 transition ease-in-out scale-90-hover delay-200 duration-1000" type="button">
+                <img class="img-fluid rounded border-0 scale-110 p-1" src="{% static 'images/search.svg' %}" alt="Search Icon">
+              </button>
+            </div>
+          </div>
+    </div>
+  </form>
+  
+</article>
+<article id="clubs">
+    <div class="container">
+        <div class="row text-center">
+          <h2 class="display-4 p-3">Top Clubs</h2>
+            {% for club in clubs %}
+            {% include "club_card_template.html" %}
+            {% endfor %}
+        </div>
+    </div>
+   </article>
+{% endblock %}

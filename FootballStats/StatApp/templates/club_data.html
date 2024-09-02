@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block title %} Club Data Page {% endblock %}
+
+
+{% block content %}
+
+<!--club heading-->
+{% for club in club_data %}
+      <article class="pt-2" style="background: {{club.primary_color}};">
+        <div class="container">
+            <div class="row text-center py-4">
+                <!--club logo-->
+                <div class="col-3">
+                    <img class="img-fluid" src="{{club.club_logo.url}}" width="100" height="100">
+                </div>
+                <!--club data-->
+                <div class="col-9"style="color:{{club.text_color}};">
+                    <div class="row">
+                        <!--club name-->
+                        <div class="col-12">
+                            <h1 class="display-4">{{club.club_name}}</h1>
+                        </div>
+                        <!--league, country, league position-->
+                        <div class="col-12 p-3">
+                           <div class="row py-1">
+                            <div class="col-12 col-md-5 col-lg-3">
+                                <h4 class="lead">League: {{club.league.league_name}}</h4>
+                            </div>
+                            <div class="col-12 col-md-5 col-lg-3">
+                                <h4 class="lead">Country: {{club.club_country}}</h4>
+                            </div>
+                            <div class="col-12 col-md-5 col-lg-3">
+                                <h6 class="lead">League Pos.: {{club.league_position}}</h6>
+                            </div>
+                            <div class="col-12 col-md-5 col-lg-3">
+                                <h6 class="lead">Squad Size: {{club.squad_size}}</h6>
+                            </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </article>
+{% endfor %}
+
+<article id="clubPlayers">
+    <br><br>
+    <!--for goalkeepers-->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-2 float-start py-3 text-dark">Goalkeepers: </h1>
+            </div>
+            <div class="container">
+                <div class="row text-center">
+                    <!--all players-->
+                    {% for top_player in all_players %}
+                      {% if top_player.position == 'Goalkeeper' %}
+                      {% include "card_templates.html" %}
+                      {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!--for defenders-->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-2 float-start py-3 text-dark">Defenders: </h1>
+            </div>
+            <div class="container">
+                <div class="row text-center">
+                    <!--all players-->
+                    {% for top_player in all_players %}
+                      {% if top_player.position == 'Defender' %}
+                      {% include "card_templates.html" %}
+                      {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!--for midfielders-->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-2 float-start py-3 text-dark">Midfielders: </h1>
+            </div>
+            <div class="container">
+                <div class="row text-center">
+                    <!--all players-->
+                    {% for top_player in all_players %}
+                      {% if top_player.position == 'Midfielder' %}
+                      {% include "card_templates.html" %}
+                      {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!--for attackers-->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-2 float-start py-3 text-dark">Attackers: </h1>
+            </div>
+            <div class="container">
+                <div class="row text-center">
+                    <!--all players-->
+                    {% for top_player in all_players %}
+                      {% if top_player.position == 'Attacker' %}
+                      {% include "card_templates.html" %}
+                      {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <br><br>
+
+    <!--for loaned outs-->
+    {% if loaned_outs %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-2 float-start py-3 text-dark">Loaned Out: </h1>
+            </div>
+            <div class="container">
+                <div class="row text-center">
+                    <!--all players-->
+                    {% for top_player in loaned_outs %}
+                     
+                      {% include "card_templates.html" %}
+                     
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+   
+</article>
+{% endblock content %}

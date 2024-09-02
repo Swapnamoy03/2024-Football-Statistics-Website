@@ -1,0 +1,36 @@
+<div class="col-sm-6 col-lg-4 p-2">
+    <div class="card rounded-4 scale-75 border-0 shadow-md shadow-lg-hover transition ease-in-out duration-700 scale-100-hover delay-200" style="background:#F9F6EE;" >
+        <!--league logo and league name-->
+        <div class="card-header p-3 rounded-top-4">
+            <div class="card-details">
+                <div class="row text-center">
+                    <!--league logo-->
+                    
+                    <div class="col-sm-12 col-md-4">
+                        <a href="{% url 'leaguedata' league.league_id %}">
+                        <img class="img-fluid rounded" src="{{league.league_logo.url}}" alt="{{league.league_name}}">
+                        </a>
+                    </div>
+                    <!--league name-->
+                    <div class="col-sm-12 col-md-8 py-3">
+                        <a class="text-decoration-none text-dark text-capitalize" href="{% url 'leaguedata' league.league_id %}"><div class="fs-4 h3 float-center ">{{league.league_name}}</div></a>
+                        <div class="d-sm-none d-md-block h5 team-data px-4">
+                            Teams: <span class="lead">{{league.max_teams}}</span>
+                        </div>
+                        <div class="d-sm-none d-xl-block lead team-data px-4">
+                            Current Champion: 
+                        </div>
+                        <div class="d-sm-none d-xl-block">
+                            <strong class="text-secondary fs-6">{{league.current_champion}}</strong>
+                        </div>
+                        
+                       
+                        <!--<p class="float-start text-black" style="font-size: 10px; letter-spacing: 3px; line-height: 1px;">
+                            {{league.max_teams}}
+                        </p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

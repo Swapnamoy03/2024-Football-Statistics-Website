@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block content %}
+ <!--club heading-->
+{% for league in league_data %}
+<article class="pt-2" style="background:{{league.primary_color}}">
+  <div class="container d-flex justify-content-center align-items-center">
+      <div class="row text-center py-4">
+          <!--league logo-->
+          <div class="col-12 col-lg-4">
+              <img class="img-fluid scale-110" src="{{league.league_logo.url}}" width="200" height="200">
+          </div>
+          <!--league data-->
+          <div class="col-8"style="color: {{league.text_color}}">
+              <div class="row py-5 d-none d-lg-block">
+                  <!--club name-->
+                  <div class="col-12">
+                      <h1 class="float-lg-start display-3 tracking-widest fw-semibold">{{league.league_name}}</h1>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</article>
+{% endfor %}
+<br><br>
+
+<!--league table-->
+
+<br><br>
+<!--participating teams-->
+<article class="pt-4 d-flex justify-content-center align-items-center">
+    <div class="container">
+        <div class="row float-start">
+            <h1 class=" p-2 display-5 text-dark tracking-wide fw-light">Participating Clubs</h1>
+            <hr class="display-2">
+            {% for club in all_clubs %}
+              {% include "club_card_template.html" %} 
+            {% endfor %}
+        </div>
+    </div>
+</article>
+
+<br><br>
+
+<!--stats-->
+<article class="pt-4 d-flex justify-content-center align-items-center">
+    <div class="container">
+        <div class="row float-start">
+            <h1 class=" p-2 display-5 text-dark tracking-wide fw-light">Player Stats</h1>
+            <hr class="display-2">
+            <div class="col-3">
+                <ul style="list-style-type: none;">
+                    {% for stat in goals %}
+                    <li  class="list-style-type-none">
+                            <div class="row">
+                                <div class="col-4">{{stat.goals}}</div>
+                                <div class="col-8">{{stat.stat_of_player}}</div>
+                            </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+             </div> 
+            <div class="col-3"></div>
+            <div class="col-3"></div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+</article>
+{% endblock %}

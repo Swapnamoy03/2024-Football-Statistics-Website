@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+
+<!--static files loading-->
+{% load static %}
+
+
+{% block title %} Home Page {% endblock %}
+
+<!--content block-->
+{% block content %}
+
+<!-- Background Audio
+<audio id="x" src="{% static 'audios/theme.mp3' %}" hidden="true" controls></audio>
+-->
+
+<!--intro-->
+<article class="intro min-vh-100 text-center d-flex justify-content-center align-items-center" id="welcome">
+    <div class="container-fluid jumbotron text-center">
+        <div class="row p-5">
+            <h1 class="display-3 text-white">Football Stats 2025</h1>
+            <p class="lead p-2 display-7 text-light">Your only place for the latest stat update of the current 24/25 season.</p>
+            <div class="animate-bounce p-4">
+                <a href="#bestPlayers">
+                    <img class="icon" src="{% static 'images/blue-arrow-down.svg' %}" alt="Arrow down icon" width="70px" height="70px">
+                </a>
+            </div>
+        </div>
+    </div>
+</article>
+
+<br><br>
+<!--top performers-->
+<article id="bestPlayers">
+    <h1 class="display-3 p-4 text-center text-dark">
+        Top Players
+    </h1>
+    <div class="container">
+        <div class="row text-center">
+            <!--top 3 players-->
+            {% for top_player in player_list %}
+              {% include "card_templates.html" %}
+            {% endfor %}
+        </div>
+    </div>
+</article>
+
+<br><br>
+
+<!--rising star-->
+<article class="text-dark text-center">
+</article>
+
+<br><br><br>
+
+<!--top attackers-->
+<article id="bestAttackers">
+    <h1 class="display-3 p-4 text-center">
+        Top Attackers
+    </h1>
+    <div class="container">
+        <div class="row text-center">
+            <!--top 3 players-->
+            {% for top_player in attacker_list %}
+              {% include "card_templates.html" %}
+            {% endfor %}
+        </div>
+    </div>
+</article>
+
+<!--Unsung Hero-->
+<article style="background:pink;">
+</article>
+
+<br><br><br>
+
+<!--top midfielders-->
+<article id="bestMidfielder">
+    <h1 class="display-3 p-4 text-center">
+        Top Midfielders
+    </h1>
+    <div class="container">
+        <div class="row text-center">
+            <!--top 3 players-->
+            {% for top_player in midfielder_list %}
+              {% include "card_templates.html" %}
+            {% endfor %}
+        </div>
+    </div>
+</article>
+
+<!--Redemption Arc-->
+<article>
+</article>
+
+<br><br><br>
+
+<!--top defenders-->
+<article id="bestDefenders">
+    <h1 class="display-3 p-4 text-center">
+        Top Defenders
+    </h1>
+    <div class="container">
+        <div class="row text-center">
+            <!--top 3 players-->
+            {% for top_player in defender_list %}
+              {% include "card_templates.html" %}
+            {% endfor %}
+            
+            
+
+            <!--top midfielders-->
+            <!--top defenders-->
+            <!--top goalkeepers-->
+        </div>
+    </div>
+</article> 
+
+<br><br><br>
+
+<!--Unbeatable-->
+<article style="background-image: url("{% static 'images/pink_background.jpg' %}")">
+</article>
+
+<!--top goalkeepers-->
+<article id="bestGoalkeepers">
+    <h1 class="display-3 p-4 text-center">
+        Top Goalkeepers
+    </h1>
+    <div class="container">
+        <div class="row text-center">
+            <!--top 3 players-->
+            {% for top_player in goalkeeper_list %}
+              {% include "card_templates.html" %}
+            {% endfor %}
+            
+            
+
+            <!--top midfielders-->
+            <!--top defenders-->
+            <!--top goalkeepers-->
+        </div>
+    </div>
+</article>
+{% endblock %}
